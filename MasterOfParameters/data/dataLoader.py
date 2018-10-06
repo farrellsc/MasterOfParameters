@@ -7,10 +7,11 @@ from sklearn.model_selection import train_test_split
 
 
 class dataLoader:
-    def __init__(self, train_path, test_path, maxlen_seq):
+    def __init__(self, train_path, test_path, maxlen_seq, ngrams):
         self.train_df = pd.read_csv(train_path)
         self.test_df = pd.read_csv(test_path)
         self.maxlen_seq = maxlen_seq
+        self.ngrams = ngrams
 
         self.tokenizer_encoder = Tokenizer()
         self.tokenizer_decoder = Tokenizer(char_level=True)
@@ -31,10 +32,10 @@ class dataLoader:
     def preprocess(self):
         train_input_seqs, train_target_seqs = \
             self.train_df[['input', 'expected']][(self.train_df.len <= self.maxlen_seq)].values.T
-        train_input_grams = seq2ngrams(train_input_seqs)
+        train_input_grams = seq2ngrams(train_input_seqs, self.ngrams)
 
         self.test_input_seqs = self.test_df['input'].values.T
-        test_input_grams = seq2ngrams(self.test_input_seqs)
+        test_input_grams = seq2ngrams(self.test_input_seqs, self.ngrams)
 
         self.tokenizer_encoder.fit_on_texts(train_input_grams)
         self.tokenizer_decoder.fit_on_texts(train_target_seqs)

@@ -3,7 +3,7 @@ from MasterOfParameters.models.DCRNN import DCRNN
 
 
 database = "/root/MasterOfParameters/data/"
-myDataLoader = dataLoader(database + 'train.csv', database + 'test.csv', 512)
+myDataLoader = dataLoader(database + 'train.csv', database + 'test.csv', 512, 6)
 
 predpath = "/root/MasterOfParameters/predictions/DCRNN.csv"
 myModel = DCRNN(myDataLoader, predpath)
