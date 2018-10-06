@@ -2,8 +2,8 @@ from MasterOfParameters.data.dataLoader import dataLoader
 from MasterOfParameters.models.lstm1 import lstm1
 
 
-base = "/media/zzhuang/00091EA2000FB1D0/iGit/git_projects/MasterOfParameters/data/"
-myDataLoader = dataLoader(base + 'train.csv', base + 'test.csv', 512)
+database = "/media/zzhuang/00091EA2000FB1D0/iGit/git_projects/MasterOfParameters/data/"
+myDataLoader = dataLoader(database + 'train.csv', database + 'test.csv', 512)
 # for further use
 # dataloader.train_input_data
 # dataloader.train_target_data
@@ -52,7 +52,8 @@ myDataLoader = dataLoader(base + 'train.csv', base + 'test.csv', 512)
 # test_input_data = sequence.pad_sequences(test_input_data, maxlen = maxlen_seq, padding = 'post')
 
 
-myModel = lstm1(myDataLoader)
+predbase = "/media/zzhuang/00091EA2000FB1D0/iGit/git_projects/MasterOfParameters/data/"
+myModel = lstm1(myDataLoader, predbase)
 myModel.train()
 myModel.predict()
 # ----------------------------------------MODEL---------------------------------------------
