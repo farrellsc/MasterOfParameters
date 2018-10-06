@@ -53,3 +53,4 @@ class dataLoader:
     def split_data(self):
         self.X_train, self.X_val, self.y_train, self.y_val = \
             train_test_split(self.train_input_data, self.train_target_data, test_size=.1, random_state=0)
+        print("train data shape:", self.X_train.shape)
