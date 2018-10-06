@@ -6,7 +6,7 @@ from MasterOfParameters.utility.utils import *
 
 class DCRNN_mini(model):
     def __init__(self, myDataLoader, predbase):
-        super(DCRNN, self).__init__(myDataLoader, predbase)
+        super(DCRNN_mini, self).__init__(myDataLoader, predbase)
 
     def build_model(self):
         input = Input(shape=(self.maxlen_seq,))
