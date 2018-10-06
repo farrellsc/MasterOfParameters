@@ -52,7 +52,7 @@ myDataLoader = dataLoader(database + 'train.csv', database + 'test.csv', 512)
 # test_input_data = sequence.pad_sequences(test_input_data, maxlen = maxlen_seq, padding = 'post')
 
 
-predbase = "/media/zzhuang/00091EA2000FB1D0/iGit/git_projects/MasterOfParameters/data/"
+predbase = "/media/zzhuang/00091EA2000FB1D0/iGit/git_projects/MasterOfParameters/predictions/"
 myModel = lstm1(myDataLoader, predbase)
 myModel.train()
 myModel.predict()
