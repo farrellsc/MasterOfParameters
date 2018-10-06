@@ -26,7 +26,7 @@ class model:
 
     def train(self):
         # Training the model on the training data and validating using the validation set
-        self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=1,
+        self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=5,
                        validation_data=(self.X_val, self.y_val), verbose=1)
 
     def predict(self):
