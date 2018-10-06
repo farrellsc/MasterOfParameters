@@ -5,8 +5,8 @@ from MasterOfParameters.utility.utils import *
 
 
 class DCRNN(model):
-    def __init__(self, myDataLoader, predbase):
-        super(DCRNN, self).__init__(myDataLoader, predbase)
+    def __init__(self, myDataLoader, predbase, epoch):
+        super(DCRNN, self).__init__(myDataLoader, predbase, epoch)
 
     def build_model(self):
         input = Input(shape=(self.maxlen_seq,))
