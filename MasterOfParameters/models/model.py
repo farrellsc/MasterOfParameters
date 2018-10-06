@@ -3,11 +3,11 @@ from MasterOfParameters.utility.utils import get_results
 
 
 class model:
-    def __init__(self, myDataLoader, predbase):
+    def __init__(self, myDataLoader, predpath):
         self.n_words = len(myDataLoader.tokenizer_encoder.word_index) + 1
         self.n_tags = len(myDataLoader.tokenizer_decoder.word_index) + 1
         self.maxlen_seq = myDataLoader.maxlen_seq
-        self.predbase = predbase
+        self.predpath = predpath
 
         self.test_result_template = myDataLoader.test_df.copy()
         self.X_train = myDataLoader.X_train
@@ -41,6 +41,5 @@ class model:
         test_df['expected'] = pd.Series(y_test_string)
         del test_df['len']
         del test_df['input']
-        print("result path:", self.predbase + __file__.split('/')[-1].split(".")[0] + "_pred.csv")
-        test_df.to_csv(self.predbase + __file__.split('/')[-1].split(".")[0] + "_pred.csv",
-                       sep=',', encoding='utf-8', index=False)
+        print("result path:", self.predpath)
+        test_df.to_csv(self.predpath, sep=',', encoding='utf-8', index=False)
