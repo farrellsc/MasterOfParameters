@@ -40,4 +40,5 @@ class model:
         test_df['expected'] = pd.Series(y_test_string)
         del test_df['len']
         del test_df['input']
+        print("result path:", __file__.split(".")[0] + "_pred.csv")
         test_df.to_csv(__file__.split(".")[0] + "_pred.csv", sep=',', encoding='utf-8', index=False)
