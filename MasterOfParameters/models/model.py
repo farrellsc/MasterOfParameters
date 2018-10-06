@@ -3,11 +3,12 @@ from MasterOfParameters.utility.utils import get_results
 
 
 class model:
-    def __init__(self, myDataLoader, predpath):
+    def __init__(self, myDataLoader, predpath, epoch=5):
         self.n_words = len(myDataLoader.tokenizer_encoder.word_index) + 1
         self.n_tags = len(myDataLoader.tokenizer_decoder.word_index) + 1
         self.maxlen_seq = myDataLoader.maxlen_seq
         self.predpath = predpath
+        self.epoch = epoch
 
         self.test_result_template = myDataLoader.test_df.copy()
         self.X_train = myDataLoader.X_train
@@ -26,7 +27,7 @@ class model:
 
     def train(self):
         # Training the model on the training data and validating using the validation set
-        self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=5,
+        self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=self.epoch,
                        validation_data=(self.X_val, self.y_val), verbose=1)
 
     def predict(self):

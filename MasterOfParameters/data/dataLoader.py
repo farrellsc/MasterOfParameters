@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 
 
 class dataLoader:
-    def __init__(self, train_path, test_path, maxlen_seq, ngrams):
+    def __init__(self, train_path, test_path, maxlen_seq, ngrams=3):
         self.train_df = pd.read_csv(train_path)
         self.test_df = pd.read_csv(test_path)
         self.maxlen_seq = maxlen_seq
