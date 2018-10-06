@@ -15,8 +15,7 @@ class GRU2(model):
         x = Embedding(input_dim=self.n_words, output_dim=128, input_length=self.maxlen_seq)(input)
 
         # Defining a bidirectional LSTM using the embedded representation of the inputs
-        x = Bidirectional(GRU(units=64, return_sequences=True, recurrent_dropout=0.4))(x)
-        x = Bidirectional(GRU(units=64, return_sequences=True, recurrent_dropout=0.4))(x)
+        x = Bidirectional(GRU(units=16, return_sequences=True, recurrent_dropout=0.4))(x)
 
         # A dense layer to output from the LSTM's64 units to the appropriate number of tags to be fed into the decoder
         y = TimeDistributed(Dense(self.n_tags, activation="softmax"))(x)
