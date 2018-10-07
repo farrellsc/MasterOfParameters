@@ -15,9 +15,12 @@ class DCRNN(model):
         x = Embedding(input_dim=self.n_words, output_dim=128, input_length=self.maxlen_seq)(input)
         x = Reshape(([1, 512, 128]))(x)
 
-        x_conv1 = Conv2D(64, 3, padding='same', activation='relu')(x)
-        x_conv2 = Conv2D(64, 7, padding='same', activation='relu')(x)
-        x_conv3 = Conv2D(64, 11, padding='same', activation='relu')(x)
+        x_conv1 = Conv2D(64, [3, 100], padding='same', activation='relu')(x)
+        x_conv1 = Reshape([512, 64])(x_conv1)
+        x_conv2 = Conv2D(64, [7, 100], padding='same', activation='relu')(x)
+        x_conv2 = Reshape([512, 64])(x_conv2)
+        x_conv3 = Conv2D(64, [11, 100], padding='same', activation='relu')(x)
+        x_conv3 = Reshape([512, 64])(x_conv3)
         x = Add()([x_conv1, x_conv2, x_conv3])
 
         # Defining a bidirectional LSTM using the embedded representation of the inputs
