@@ -34,6 +34,7 @@ class DCRNN(model):
 
         # Defining the model as a whole and printing the summary
         self.model = Model(input, y)
+        self.model.summary()
 
         # Setting up the model with categorical x-entropy loss and the custom accuracy function as accuracy
         self.model.compile(optimizer="rmsprop", loss="categorical_crossentropy", metrics=["accuracy", myAccuracy])
