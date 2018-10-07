@@ -18,13 +18,13 @@ new_train_input = np.zeros([len(train_input_data_str), len(train_input_data_str[
 for i in range(new_train_input .shape[0]):
     for j in range(new_train_input .shape[1]):
         new_train_input[i, j] = wvModel.wv[train_input_data_str[i][j]]
-new_train_input = new_train_input.reshape([new_train_input.shape[0], 1, new_train_input.shape[2], new_train_input[3]])
+new_train_input = new_train_input.reshape([new_train_input.shape[0], 1, new_train_input.shape[1], new_train_input[2]])
 
 new_test_input = np.zeros([len(test_input_data_str), len(test_input_data_str[0]), wvSize])  # 119*512*100
 for i in range(new_test_input.shape[0]):
     for j in range(new_test_input.shape[1]):
         new_test_input[i, j] = wvModel.wv[test_input_data_str[i][j]]
-new_test_input = new_test_input.reshape([new_test_input.shape[0], 1, new_test_input.shape[2], new_test_input[3]])
+new_test_input = new_test_input.reshape([new_test_input.shape[0], 1, new_test_input.shape[1], new_test_input[2]])
 
 myDataLoader.train_input_data = new_train_input
 myDataLoader.test_input_data = new_test_input
