@@ -9,7 +9,7 @@ class DCRNN(model):
         super(DCRNN, self).__init__(myDataLoader, predbase, epoch)
 
     def build_model(self):
-        input = Input(shape=(self.maxlen_seq,))
+        input = Input(shape=(1, self.maxlen_seq,))
 
         # Defining an embedding layer mapping from the words (n_words) to a vector of len 128
         x = Embedding(input_dim=self.n_words, output_dim=128, input_length=self.maxlen_seq)(input)
